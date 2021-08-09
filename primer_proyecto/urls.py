@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('mi_app.urls')), 
+    path('', include('mi_app.urls')),
+    path('ninja/',include('ninja_gold.urls')),
     path('ramdom/', include('ramdom_app.urls')),
     path('admin/', admin.site.urls)
 ]
