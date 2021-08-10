@@ -1,10 +1,12 @@
-from primer_proyecto import ninja_gold
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render 
 from django.utils.crypto import get_random_string
 from random import randint
 
 def index(request):
+    if 'gold' not in request.session:
+        request.session['gold'] = 0
+    
     return render(request,"ninja_gold.html")
 
 def proces_money(request):
@@ -19,7 +21,7 @@ def proces_money(request):
 
     elif request.POST['place'] == 'house':
         gold = randint(2,5)
-    else:
+    elif request.POST['place'] == 'casino':
         gold = randint(-50,50)
 
     request.session['gold'] += gold
@@ -28,4 +30,13 @@ def proces_money(request):
 
     return redirect("/ninja/home")
 
+def exit(request):
+    request.session['gold'] = 0
+    request.session['activities'] = []
+    return render(request,"login.html")
 
+
+
+
+
+    

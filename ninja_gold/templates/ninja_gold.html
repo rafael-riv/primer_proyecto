@@ -11,15 +11,17 @@
         <title>Ninja Gold</title>
     </head>
     <body>
-      <div class="container">
-        <div class="caja"></div>
+      
+      <form action="/ninja/process_money" method="POST">{% csrf_token %}
+        <div class="caja">Tu tesoro disponible es : {{request.session.gold}}</div>
         <div class="row">
+          
           <div class="card m-3" style="width: 18rem;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1ee_uq8JSDnSfqM30F_VhoG-rgRv7fbFMCg&usqp=CAU" class="card-img-top" alt="Cosecha de Maiz">
             <div class="card-body">
               <h5 class="card-title">Farm</h5>
               <p class="card-text">Recuerda que el Maíz es el oro de los sabios (earn 20-30 golds)</p>
-              <a href="#" class="btn btn-primary">Find Gold</a>
+              <button type = "submit" class="btn btn-primary" name = "place" value = "farm">Find Gold!</button>
             </div>
           </div>
           <div class="card m-3" style="width: 18rem;">
@@ -27,7 +29,7 @@
             <div class="card-body">
               <h5 class="card-title">Cave</h5>
               <p class="card-text">La cavernas de marmol es un tesoro por si solo. (earns 5-10 golds)</p>
-              <a href="#" class="btn btn-primary">Find Gold!</a>
+              <button type = "submit" class="btn btn-primary" name = "place" value = "cave">Find Gold!</button>
             </div>
           </div>
           <div class="card m-3" style="width: 18rem;">
@@ -35,7 +37,7 @@
             <div class="card-body">
               <h5 class="card-title">House</h5>
               <p class="card-text">Si el oro tuviera forma de casa, ésta sería una gran perspectiva!(earns 2-5)</p>
-              <a href="#" class="btn btn-primary">Find Gold!</a>
+              <button type = "submit" class="btn btn-primary" name = "place" value = "house">Find Gold!</button>
             </div>
           </div>
           <div class="card m-3" style="width: 18rem;">
@@ -43,11 +45,23 @@
             <div class="card-body">
               <h5 class="card-title">Casino</h5>
               <p class="card-text">Aquí te juegas la suerte, si la fortuna te sonríe serás bendecido con el azar, pero si pierdes llorarán tus arcas.(earns/takes 0-50 golds)</p>
-              <a href="#" class="btn btn-primary">Find Gold!</a>
+              <button type = "submit" class="btn btn-primary" name = "place" value = "casino">Find Gold!</button>
             </div>
           </div>
         </div>
-      </div>
+
+  
+       
+      </form>
+      <form action ="/ninja/exit" method='POST'>
+        {% csrf_token %}
+        <input type="hidden">
+        <button class="btn btn-outline-danger my-2" type="submit">Exit</button>
+    </form>
+
+      <h3>actividad</h3>}
+
+      <p>{{request.session.activities}}</p><br>
     </body>
         
 </html>

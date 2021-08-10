@@ -11,6 +11,15 @@
         <title>Login Ninja Gold</title>
     </head>
     <body>
-        
+        <label class="form-label">Recuerda ingresar tu Nombre</label>
+        <input type="name" id="pass" class="form-control" aria-describedby="passwordHelpBlock">
+        <div id="passwordHelpBlock" class="form-text">
+        <p>INGRESA TU NOMBRE </p> 
+        </div>
+        <form action ="/ninja/home" method='POST'>
+            {% csrf_token %}
+            <input type="hidden">
+            <button class="btn btn-outline-danger my-2" type="submit">Enter</button>
+        </form>
     </body>
 </html>
